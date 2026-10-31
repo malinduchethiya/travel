@@ -3,190 +3,306 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ceylon Trails — Sri Lanka Travel Guide for UK & Indian Travellers</title>
+<title>Ceylon Trails — Sri Lanka Travel Guide</title>
 <meta name="description" content="Plan your Sri Lanka trip from the UK or India. Visa info, flights, itineraries, top destinations, and budget tips.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0b1220;--card:#131c33;--accent:#f4a261;--accent2:#2a9d8f;--text:#e8eef7;--muted:#9aa7bf;--line:#1f2a44;
+    --bg:#06090f;--bg2:#0d1320;--card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);
+    --accent:#ff6b35;--accent2:#00d4aa;--accent3:#ffd166;--text:#f5f7fa;--muted:#8a94a6;--line:rgba(255,255,255,.08);
+    --glow:0 0 60px rgba(255,107,53,.25);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-  a{color:var(--accent);text-decoration:none}
-  header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
-  .brand{font-weight:800;font-size:1.2rem;color:var(--accent)}
-  .navlinks{display:flex;gap:18px;list-style:none}
-  .navlinks a{color:var(--text);font-size:.95rem}
-  .navlinks a:hover{color:var(--accent)}
-  .hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:linear-gradient(135deg,#1a2a4a 0%,#0b1220 100%)}
-  .hero::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1586511925558-a4c6376798d6?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;opacity:.25}
-  .hero > *{position:relative;z-index:1}
-  .hero h1{font-size:clamp(2rem,5vw,3.6rem);font-weight:800;margin-bottom:12px}
-  .hero p{max-width:640px;margin:0 auto 24px;color:var(--muted);font-size:1.1rem}
-  .btn{display:inline-block;padding:12px 24px;border-radius:8px;font-weight:600;margin:6px}
-  .btn-primary{background:var(--accent);color:#1a1208}
-  .btn-outline{border:1px solid var(--accent);color:var(--accent)}
-  section{max-width:1100px;margin:0 auto;padding:60px 20px}
-  h2{font-size:2rem;margin-bottom:8px}
-  .sub{color:var(--muted);margin-bottom:32px}
-  .grid{display:grid;gap:20px}
-  .grid-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
-  .card h3{color:var(--accent);margin-bottom:8px}
-  .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;margin-right:6px}
-  .badge-uk{background:#1f3b73;color:#cfe0ff}
-  .badge-in{background:#7a3b1f;color:#ffd9c2}
-  .dest img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px}
-  .dest h3{color:var(--text)}
-  .itinerary{background:var(--card);border-left:4px solid var(--accent);padding:18px 22px;margin-bottom:16px;border-radius:8px}
-  .itinerary h4{color:var(--accent);margin-bottom:6px}
-  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:8px;overflow:hidden}
-  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
-  th{background:#1a2540;color:var(--accent)}
-  footer{border-top:1px solid var(--line);padding:30px 20px;text-align:center;color:var(--muted);font-size:.9rem}
-  .cta{background:linear-gradient(135deg,var(--accent2),#1a5e56);border-radius:16px;padding:40px 24px;text-align:center}
-  .cta h2{color:#fff}
-  .cta p{color:#e0f2ef}
-  @media(max-width:600px){.navlinks{display:none}}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+  ::selection{background:var(--accent);color:#fff}
+  a{color:inherit;text-decoration:none}
+  .display{font-family:'Fraunces',serif;font-weight:300;letter-spacing:-.02em}
+
+  /* animated gradient bg */
+  body::before{content:"";position:fixed;inset:0;z-index:-2;background:
+    radial-gradient(60% 50% at 20% 10%,rgba(255,107,53,.18),transparent 60%),
+    radial-gradient(50% 40% at 80% 30%,rgba(0,212,170,.15),transparent 60%),
+    radial-gradient(40% 40% at 50% 90%,rgba(255,209,102,.12),transparent 60%),
+    var(--bg)}
+  .noise{position:fixed;inset:0;z-index:-1;opacity:.04;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>")}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 0}
+  header .inner{max-width:1240px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;display:flex;align-items:center;gap:8px}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 16px var(--accent)}
+  nav ul{display:flex;gap:28px;list-style:none}
+  nav a{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:.3s}
+  nav a:hover{color:var(--text)}
+  .cta-btn{padding:10px 20px;border-radius:999px;background:linear-gradient(135deg,var(--accent),#ff8f5a);color:#fff;font-weight:600;font-size:.85rem;transition:.3s;box-shadow:0 8px 24px rgba(255,107,53,.3)}
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,107,53,.45)}
+
+  .hero{min-height:100vh;display:grid;place-items:center;padding:120px 28px 80px;position:relative}
+  .hero-inner{max-width:1240px;width:100%;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:28px}
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent2);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+  .hero h1{font-size:clamp(2.8rem,7vw,6rem);line-height:.95;margin-bottom:24px}
+  .hero h1 .italic{font-style:italic;color:var(--accent)}
+  .hero p{font-size:1.15rem;color:var(--muted);max-width:520px;margin-bottom:36px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-ghost{padding:14px 28px;border-radius:999px;border:1px solid var(--line);color:var(--text);font-weight:500;transition:.3s}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+  .hero-visual{position:relative;aspect-ratio:4/5;border-radius:24px;overflow:hidden;box-shadow:var(--glow)}
+  .hero-visual img{width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
+  .hero-visual:hover img{transform:scale(1.08)}
+  .hero-visual .overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,9,15,.9))}
+  .hero-visual .tag{position:absolute;bottom:24px;left:24px;padding:10px 16px;border-radius:12px;background:rgba(6,9,15,.7);backdrop-filter:blur(10px);border:1px solid var(--line);font-size:.85rem}
+  .hero-visual .tag strong{color:var(--accent3)}
+
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;white-space:nowrap}
+  .marquee-track{display:inline-block;animation:scroll 30s linear infinite}
+  .marquee span{font-family:'Fraunces',serif;font-size:1.6rem;font-style:italic;color:var(--muted);margin:0 40px}
+  .marquee span b{color:var(--accent);font-weight:400}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  section{max-width:1240px;margin:0 auto;padding:120px 28px}
+  .section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:60px;gap:40px;flex-wrap:wrap}
+  .section-head h2{font-size:clamp(2.2rem,4.5vw,3.6rem);line-height:1}
+  .section-head p{color:var(--muted);max-width:420px}
+
+  .dest-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+  .dest{position:relative;border-radius:20px;overflow:hidden;background:var(--card);border:1px solid var(--line);transition:.4s}
+  .dest:hover{transform:translateY(-6px);border-color:rgba(255,107,53,.4);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+  .dest img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .dest:hover img{transform:scale(1.1)}
+  .dest .info{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(180deg,transparent,rgba(6,9,15,.95))}
+  .dest .info h3{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:500;margin-bottom:4px}
+  .dest .info p{color:var(--muted);font-size:.85rem}
+  .d1{grid-column:span 6;aspect-ratio:16/10}
+  .d2{grid-column:span 3;aspect-ratio:3/4}
+  .d3{grid-column:span 3;aspect-ratio:3/4}
+  .d4{grid-column:span 4;aspect-ratio:4/3}
+  .d5{grid-column:span 4;aspect-ratio:4/3}
+  .d6{grid-column:span 4;aspect-ratio:4/3}
+
+  .visa-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+  .visa-card{padding:36px;border-radius:20px;background:linear-gradient(180deg,var(--card),transparent);border:1px solid var(--line);position:relative;overflow:hidden}
+  .visa-card::after{content:"";position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;filter:blur(40px);opacity:.4}
+  .visa-card.uk::after{background:var(--accent)}
+  .visa-card.in::after{background:var(--accent2)}
+  .visa-card.gen::after{background:var(--accent3)}
+  .visa-card .flag{font-size:2.4rem;margin-bottom:16px}
+  .visa-card h3{font-family:'Fraunces',serif;font-size:1.6rem;margin-bottom:12px}
+  .visa-card ul{list-style:none;margin-top:16px}
+  .visa-card li{padding:8px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:.9rem;display:flex;gap:10px}
+  .visa-card li::before{content:"→";color:var(--accent)}
+
+  .itin{display:grid;gap:16px}
+  .itin-item{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:28px;border-radius:20px;background:var(--card);border:1px solid var(--line);transition:.3s}
+  .itin-item:hover{border-color:var(--accent);background:var(--card2)}
+  .itin-num{font-family:'Fraunces',serif;font-size:3rem;font-weight:300;color:var(--accent);line-height:1}
+  .itin-item h4{font-family:'Fraunces',serif;font-size:1.4rem;margin-bottom:6px}
+  .itin-item p{color:var(--muted);font-size:.9rem}
+  .tag{display:inline-block;padding:4px 10px;border-radius:999px;font-size:.7rem;font-weight:600;margin-left:8px;vertical-align:middle}
+  .tag-uk{background:rgba(255,107,53,.15);color:var(--accent)}
+  .tag-in{background:rgba(0,212,170,.15);color:var(--accent2)}
+
+  .budget{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .budget-card{padding:32px;border-radius:20px;background:var(--card);border:1px solid var(--line);text-align:center}
+  .budget-card h4{font-family:'Fraunces',serif;font-size:1.6rem;margin-bottom:4px}
+  .budget-card .price{font-family:'Fraunces',serif;font-size:3rem;font-weight:600;color:var(--accent3);margin:12px 0}
+  .budget-card ul{list-style:none;margin-top:16px;text-align:left}
+  .budget-card li{padding:6px 0;color:var(--muted);font-size:.85rem;display:flex;justify-content:space-between;border-bottom:1px solid var(--line)}
+  .budget-card li span{color:var(--text)}
+
+  .cta{margin:0 28px 80px;padding:80px 40px;border-radius:32px;background:linear-gradient(135deg,rgba(255,107,53,.15),rgba(0,212,170,.1));border:1px solid var(--line);text-align:center;position:relative;overflow:hidden}
+  .cta h2{font-size:clamp(2.4rem,5vw,4rem);margin-bottom:16px}
+  .cta p{color:var(--muted);max-width:500px;margin:0 auto 32px}
+
+  footer{border-top:1px solid var(--line);padding:40px 28px;max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;color:var(--muted);font-size:.85rem}
+
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr;gap:40px}
+    .hero-visual{max-width:420px;margin:0 auto}
+    .d1,.d2,.d3,.d4,.d5,.d6{grid-column:span 12;aspect-ratio:16/10}
+    nav ul{display:none}
+  }
+  @media(max-width:600px){.itin-item{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<div class="noise"></div>
+
 <header>
-  <nav>
-    <div class="brand">🌴 Ceylon Trails</div>
-    <ul class="navlinks">
+  <div class="inner">
+    <div class="brand"><span class="dot"></span>Ceylon Trails</div>
+    <nav><ul>
       <li><a href="#destinations">Destinations</a></li>
       <li><a href="#visa">Visa</a></li>
       <li><a href="#itineraries">Itineraries</a></li>
       <li><a href="#budget">Budget</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+    </ul></nav>
+    <a class="cta-btn" href="#contact">Plan Trip</a>
+  </div>
 </header>
 
 <section class="hero">
-  <div>
-    <h1>Discover Sri Lanka</h1>
-    <p>Your complete travel guide for UK and Indian travellers — flights, visas, itineraries, and insider tips for the Pearl of the Indian Ocean.</p>
-    <a class="btn btn-primary" href="#itineraries">Plan Your Trip</a>
-    <a class="btn btn-outline" href="#destinations">Explore Destinations</a>
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Sri Lanka · UK & India Edition</div>
+      <h1 class="display">The island that <span class="italic">changes</span> you.</h1>
+      <p>From misty tea highlands to whale-filled oceans — a modern guide crafted for travellers flying in from London and Chennai alike.</p>
+      <div class="hero-actions">
+        <a class="cta-btn" href="#itineraries">Start Planning</a>
+        <a class="btn-ghost" href="#destinations">Explore →</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="https://images.unsplash.com/photo-1586511925558-a4c6376798d6?auto=format&fit=crop&w=900&q=70" alt="Sri Lanka">
+      <div class="overlay"></div>
+      <div class="tag">📍 <strong>Sigiriya</strong> · Lion Rock at dawn</div>
+    </div>
   </div>
 </section>
 
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Tea country trains <b>·</b></span><span>Whale watching Mirissa <b>·</b></span><span>Galle Fort sunsets <b>·</b></span><span>Leopard safaris Yala <b>·</b></span><span>Nine Arches Bridge <b>·</b></span><span>Trincomalee beaches <b>·</b></span>
+    <span>Tea country trains <b>·</b></span><span>Whale watching Mirissa <b>·</b></span><span>Galle Fort sunsets <b>·</b></span><span>Leopard safaris Yala <b>·</b></span><span>Nine Arches Bridge <b>·</b></span><span>Trincomalee beaches <b>·</b></span>
+  </div>
+</div>
+
 <section id="destinations">
-  <h2>Top Destinations</h2>
-  <p class="sub">From ancient ruins to golden beaches and misty highlands.</p>
-  <div class="grid grid-3">
-    <div class="card dest">
-      <img src="https://images.unsplash.com/photo-1566296314736-6eaac905d34d?auto=format&fit=crop&w=600&q=60" alt="Sigiriya">
-      <h3>Sigiriya</h3>
-      <p>The iconic Lion Rock fortress. Climb at sunrise for unforgettable views.</p>
-    </div>
-    <div class="card dest">
-      <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=600&q=60" alt="Ella">
-      <h3>Ella & Tea Country</h3>
-      <p>Train rides through misty hills, Nine Arches Bridge, and lush tea plantations.</p>
-    </div>
-    <div class="card dest">
-      <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=60" alt="Galle">
-      <h3>Galle Fort</h3>
-      <p>Colonial charm, cobblestone streets, boutique cafes and ocean views.</p>
-    </div>
-    <div class="card dest">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=60" alt="Mirissa">
-      <h3>Mirissa & South Coast</h3>
-      <p>Whale watching, surf breaks and palm-fringed beaches.</p>
-    </div>
-    <div class="card dest">
-      <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=600&q=60" alt="Yala">
-      <h3>Yala National Park</h3>
-      <p>Leopard safaris and diverse wildlife in Sri Lanka's premier reserve.</p>
-    </div>
-    <div class="card dest">
-      <img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=600&q=60" alt="Kandy">
-      <h3>Kandy</h3>
-      <p>Temple of the Tooth, cultural dance shows and the scenic lake.</p>
-    </div>
+  <div class="section-head">
+    <h2 class="display">Where to go</h2>
+    <p>Six essential stops — from ancient citadels to surf-swept shores.</p>
+  </div>
+  <div class="dest-grid">
+    <div class="dest d1"><img src="https://images.unsplash.com/photo-1566296314736-6eaac905d34d?auto=format&fit=crop&w=900&q=60" alt="Sigiriya"><div class="info"><h3>Sigiriya</h3><p>Lion Rock fortress · best at sunrise</p></div></div>
+    <div class="dest d2"><img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=500&q=60" alt="Ella"><div class="info"><h3>Ella</h3><p>Tea country & trains</p></div></div>
+    <div class="dest d3"><img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=500&q=60" alt="Galle"><div class="info"><h3>Galle Fort</h3><p>Colonial charm</p></div></div>
+    <div class="dest d4"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=60" alt="Mirissa"><div class="info"><h3>Mirissa</h3><p>Whales & surf</p></div></div>
+    <div class="dest d5"><img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=600&q=60" alt="Yala"><div class="info"><h3>Yala</h3><p>Leopard safaris</p></div></div>
+    <div class="dest d6"><img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=600&q=60" alt="Kandy"><div class="info"><h3>Kandy</h3><p>Temple of the Tooth</p></div></div>
   </div>
 </section>
 
 <section id="visa">
-  <h2>Visa & Entry</h2>
-  <p class="sub">Requirements for travellers from the UK and India.</p>
-  <div class="grid grid-3">
-    <div class="card">
-      <h3><span class="badge badge-uk">UK</span> United Kingdom</h3>
-      <p>ETA required before travel. Apply online via ETA portal. Valid 30 days, extendable. Passport valid 6 months. Return ticket and funds proof may be requested.</p>
+  <div class="section-head">
+    <h2 class="display">Visa & entry</h2>
+    <p>Everything UK and Indian travellers need before boarding.</p>
+  </div>
+  <div class="visa-grid">
+    <div class="visa-card uk">
+      <div class="flag">🇬🇧</div>
+      <h3>United Kingdom</h3>
+      <p style="color:var(--muted);font-size:.9rem">ETA required before travel. Apply online.</p>
+      <ul>
+        <li>30-day tourist visa, extendable</li>
+        <li>Passport valid 6 months</li>
+        <li>Return ticket & funds proof</li>
+        <li>Direct flights ~11h from LHR</li>
+      </ul>
     </div>
-    <div class="card">
-      <h3><span class="badge badge-in">India</span> India</h3>
-      <p>ETA required. Indian nationals can apply online. 30-day tourist visa, extendable. Passport valid 6 months. Frequent flights from Chennai, Mumbai, Delhi, Bengaluru.</p>
+    <div class="visa-card in">
+      <div class="flag">🇮🇳</div>
+      <h3>India</h3>
+      <p style="color:var(--muted);font-size:.9rem">ETA required. Apply online.</p>
+      <ul>
+        <li>30-day tourist visa, extendable</li>
+        <li>Passport valid 6 months</li>
+        <li>Flights from Chennai, Mumbai, Delhi, BLR</li>
+        <li>Duration 2.5–4 hours</li>
+      </ul>
     </div>
-    <div class="card">
-      <h3>General Tips</h3>
-      <p>Carry printed ETA approval. Travel insurance recommended. Yellow fever certificate if arriving from endemic country. Customs: 2L alcohol, 200 cigarettes duty-free.</p>
+    <div class="visa-card gen">
+      <div class="flag">✈️</div>
+      <h3>Pro tips</h3>
+      <p style="color:var(--muted);font-size:.9rem">Smooth arrival checklist.</p>
+      <ul>
+        <li>Carry printed ETA approval</li>
+        <li>Travel insurance recommended</li>
+        <li>Yellow fever cert if applicable</li>
+        <li>Duty-free: 2L alcohol, 200 cigs</li>
+      </ul>
     </div>
   </div>
 </section>
 
 <section id="itineraries">
-  <h2>Suggested Itineraries</h2>
-  <p class="sub">Tailored for UK and Indian travellers.</p>
-  <div class="itinerary">
-    <h4>7 Days — Classic Highlights <span class="badge badge-uk">UK</span><span class="badge badge-in">India</span></h4>
-    <p>Colombo → Sigiriya → Kandy → Ella (train) → Mirissa → Galle → Colombo.</p>
+  <div class="section-head">
+    <h2 class="display">Suggested routes</h2>
+    <p>Curated for different trip lengths and origins.</p>
   </div>
-  <div class="itinerary">
-    <h4>10 Days — Culture & Coast <span class="badge badge-uk">UK</span></h4>
-    <p>Add Polonnaruwa, Anuradhapura, and Trincomalee whale watching. Best May–Sep for east coast.</p>
-  </div>
-  <div class="itinerary">
-    <h4>5 Days — Short Break <span class="badge badge-in">India</span></h4>
-    <p>Colombo → Kandy → Bentota beach → Colombo. Ideal long weekend from South India.</p>
+  <div class="itin">
+    <div class="itin-item">
+      <div class="itin-num">07</div>
+      <div>
+        <h4>Classic Highlights <span class="tag tag-uk">UK</span><span class="tag tag-in">India</span></h4>
+        <p>Colombo → Sigiriya → Kandy → Ella (train) → Mirissa → Galle → Colombo.</p>
+      </div>
+    </div>
+    <div class="itin-item">
+      <div class="itin-num">10</div>
+      <div>
+        <h4>Culture & Coast <span class="tag tag-uk">UK</span></h4>
+        <p>Add Polonnaruwa, Anuradhapura and Trincomalee whale watching. Best May–Sep for east coast.</p>
+      </div>
+    </div>
+    <div class="itin-item">
+      <div class="itin-num">05</div>
+      <div>
+        <h4>Short Break <span class="tag tag-in">India</span></h4>
+        <p>Colombo → Kandy → Bentota beach → Colombo. Ideal long weekend from South India.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="budget">
-  <h2>Budget Guide</h2>
-  <p class="sub">Daily costs per person (USD).</p>
-  <table>
-    <thead><tr><th>Style</th><th>Accommodation</th><th>Food</th><th>Transport</th><th>Total/day</th></tr></thead>
-    <tbody>
-      <tr><td>Backpacker</td><td>$10–20</td><td>$8–12</td><td>$5–8</td><td>$25–40</td></tr>
-      <tr><td>Mid-range</td><td>$40–80</td><td>$15–25</td><td>$15–25</td><td>$70–130</td></tr>
-      <tr><td>Luxury</td><td>$150+</td><td>$40+</td><td>$40+</td><td>$230+</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<section id="flights">
-  <h2>Flights</h2>
-  <p class="sub">Direct and connecting routes.</p>
-  <div class="grid grid-3">
-    <div class="card">
-      <h3><span class="badge badge-uk">UK</span> From UK</h3>
-      <p>Direct flights from London Heathrow (SriLankan Airlines, ~11h). Also via Dubai, Doha, Abu Dhabi with Emirates, Qatar, Etihad.</p>
+  <div class="section-head">
+    <h2 class="display">Budget guide</h2>
+    <p>Daily costs per person in USD.</p>
+  </div>
+  <div class="budget">
+    <div class="budget-card">
+      <h4>Backpacker</h4>
+      <div class="price">$25–40</div>
+      <ul>
+        <li>Accommodation <span>$10–20</span></li>
+        <li>Food <span>$8–12</span></li>
+        <li>Transport <span>$5–8</span></li>
+      </ul>
     </div>
-    <div class="card">
-      <h3><span class="badge badge-in">India</span> From India</h3>
-      <p>Direct flights from Chennai, Mumbai, Delhi, Bengaluru, Hyderabad, Kochi (2.5–4h). Airlines: SriLankan, IndiGo, Air India.</p>
+    <div class="budget-card">
+      <h4>Mid-range</h4>
+      <div class="price">$70–130</div>
+      <ul>
+        <li>Accommodation <span>$40–80</span></li>
+        <li>Food <span>$15–25</span></li>
+        <li>Transport <span>$15–25</span></li>
+      </ul>
     </div>
-    <div class="card">
-      <h3>Airports</h3>
-      <p>Bandaranaike International (CMB) near Colombo is the main gateway. Mattala (HRI) serves south coast.</p>
+    <div class="budget-card">
+      <h4>Luxury</h4>
+      <div class="price">$230+</div>
+      <ul>
+        <li>Accommodation <span>$150+</span></li>
+        <li>Food <span>$40+</span></li>
+        <li>Transport <span>$40+</span></li>
+      </ul>
     </div>
   </div>
 </section>
 
 <section class="cta" id="contact">
-  <h2>Ready to explore Sri Lanka?</h2>
-  <p>Get personalised itineraries, visa help and on-ground support.</p>
-  <a class="btn btn-primary" href="mailto:hello@ceylontrails.com">Contact Us</a>
+  <h2 class="display">Ready to explore Sri Lanka?</h2>
+  <p>Get personalised itineraries, visa help and on-ground support for your trip.</p>
+  <a class="cta-btn" href="mailto:hello@ceylontrails.com">Contact Us →</a>
 </section>
 
 <footer>
-  © 2026 Ceylon Trails — Sri Lanka Travel Guide for UK & Indian Travellers
+  <div>© 2026 Ceylon Trails</div>
+  <div>Sri Lanka Travel Guide · UK & India Edition</div>
 </footer>
 </body>
 </html>
