@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ceylon Trails — Sri Lanka Travel Guide for UK & Indian Travellers</title>
+<meta name="description" content="Plan your Sri Lanka trip from the UK or India. Visa info, flights, itineraries, top destinations, and budget tips.">
+<style>
+  :root{
+    --bg:#0b1220;--card:#131c33;--accent:#f4a261;--accent2:#2a9d8f;--text:#e8eef7;--muted:#9aa7bf;--line:#1f2a44;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  a{color:var(--accent);text-decoration:none}
+  header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+  .brand{font-weight:800;font-size:1.2rem;color:var(--accent)}
+  .navlinks{display:flex;gap:18px;list-style:none}
+  .navlinks a{color:var(--text);font-size:.95rem}
+  .navlinks a:hover{color:var(--accent)}
+  .hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:linear-gradient(135deg,#1a2a4a 0%,#0b1220 100%)}
+  .hero::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1586511925558-a4c6376798d6?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;opacity:.25}
+  .hero > *{position:relative;z-index:1}
+  .hero h1{font-size:clamp(2rem,5vw,3.6rem);font-weight:800;margin-bottom:12px}
+  .hero p{max-width:640px;margin:0 auto 24px;color:var(--muted);font-size:1.1rem}
+  .btn{display:inline-block;padding:12px 24px;border-radius:8px;font-weight:600;margin:6px}
+  .btn-primary{background:var(--accent);color:#1a1208}
+  .btn-outline{border:1px solid var(--accent);color:var(--accent)}
+  section{max-width:1100px;margin:0 auto;padding:60px 20px}
+  h2{font-size:2rem;margin-bottom:8px}
+  .sub{color:var(--muted);margin-bottom:32px}
+  .grid{display:grid;gap:20px}
+  .grid-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+  .card h3{color:var(--accent);margin-bottom:8px}
+  .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600;margin-right:6px}
+  .badge-uk{background:#1f3b73;color:#cfe0ff}
+  .badge-in{background:#7a3b1f;color:#ffd9c2}
+  .dest img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+  .dest h3{color:var(--text)}
+  .itinerary{background:var(--card);border-left:4px solid var(--accent);padding:18px 22px;margin-bottom:16px;border-radius:8px}
+  .itinerary h4{color:var(--accent);margin-bottom:6px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:8px;overflow:hidden}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:#1a2540;color:var(--accent)}
+  footer{border-top:1px solid var(--line);padding:30px 20px;text-align:center;color:var(--muted);font-size:.9rem}
+  .cta{background:linear-gradient(135deg,var(--accent2),#1a5e56);border-radius:16px;padding:40px 24px;text-align:center}
+  .cta h2{color:#fff}
+  .cta p{color:#e0f2ef}
+  @media(max-width:600px){.navlinks{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <div class="brand">🌴 Ceylon Trails</div>
+    <ul class="navlinks">
+      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#visa">Visa</a></li>
+      <li><a href="#itineraries">Itineraries</a></li>
+      <li><a href="#budget">Budget</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Discover Sri Lanka</h1>
+    <p>Your complete travel guide for UK and Indian travellers — flights, visas, itineraries, and insider tips for the Pearl of the Indian Ocean.</p>
+    <a class="btn btn-primary" href="#itineraries">Plan Your Trip</a>
+    <a class="btn btn-outline" href="#destinations">Explore Destinations</a>
+  </div>
+</section>
+
+<section id="destinations">
+  <h2>Top Destinations</h2>
+  <p class="sub">From ancient ruins to golden beaches and misty highlands.</p>
+  <div class="grid grid-3">
+    <div class="card dest">
+      <img src="https://images.unsplash.com/photo-1566296314736-6eaac905d34d?auto=format&fit=crop&w=600&q=60" alt="Sigiriya">
+      <h3>Sigiriya</h3>
+      <p>The iconic Lion Rock fortress. Climb at sunrise for unforgettable views.</p>
+    </div>
+    <div class="card dest">
+      <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=600&q=60" alt="Ella">
+      <h3>Ella & Tea Country</h3>
+      <p>Train rides through misty hills, Nine Arches Bridge, and lush tea plantations.</p>
+    </div>
+    <div class="card dest">
+      <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=60" alt="Galle">
+      <h3>Galle Fort</h3>
+      <p>Colonial charm, cobblestone streets, boutique cafes and ocean views.</p>
+    </div>
+    <div class="card dest">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=60" alt="Mirissa">
+      <h3>Mirissa & South Coast</h3>
+      <p>Whale watching, surf breaks and palm-fringed beaches.</p>
+    </div>
+    <div class="card dest">
+      <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=600&q=60" alt="Yala">
+      <h3>Yala National Park</h3>
+      <p>Leopard safaris and diverse wildlife in Sri Lanka's premier reserve.</p>
+    </div>
+    <div class="card dest">
+      <img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=600&q=60" alt="Kandy">
+      <h3>Kandy</h3>
+      <p>Temple of the Tooth, cultural dance shows and the scenic lake.</p>
+    </div>
+  </div>
+</section>
+
+<section id="visa">
+  <h2>Visa & Entry</h2>
+  <p class="sub">Requirements for travellers from the UK and India.</p>
+  <div class="grid grid-3">
+    <div class="card">
+      <h3><span class="badge badge-uk">UK</span> United Kingdom</h3>
+      <p>ETA required before travel. Apply online via ETA portal. Valid 30 days, extendable. Passport valid 6 months. Return ticket and funds proof may be requested.</p>
+    </div>
+    <div class="card">
+      <h3><span class="badge badge-in">India</span> India</h3>
+      <p>ETA required. Indian nationals can apply online. 30-day tourist visa, extendable. Passport valid 6 months. Frequent flights from Chennai, Mumbai, Delhi, Bengaluru.</p>
+    </div>
+    <div class="card">
+      <h3>General Tips</h3>
+      <p>Carry printed ETA approval. Travel insurance recommended. Yellow fever certificate if arriving from endemic country. Customs: 2L alcohol, 200 cigarettes duty-free.</p>
+    </div>
+  </div>
+</section>
+
+<section id="itineraries">
+  <h2>Suggested Itineraries</h2>
+  <p class="sub">Tailored for UK and Indian travellers.</p>
+  <div class="itinerary">
+    <h4>7 Days — Classic Highlights <span class="badge badge-uk">UK</span><span class="badge badge-in">India</span></h4>
+    <p>Colombo → Sigiriya → Kandy → Ella (train) → Mirissa → Galle → Colombo.</p>
+  </div>
+  <div class="itinerary">
+    <h4>10 Days — Culture & Coast <span class="badge badge-uk">UK</span></h4>
+    <p>Add Polonnaruwa, Anuradhapura, and Trincomalee whale watching. Best May–Sep for east coast.</p>
+  </div>
+  <div class="itinerary">
+    <h4>5 Days — Short Break <span class="badge badge-in">India</span></h4>
+    <p>Colombo → Kandy → Bentota beach → Colombo. Ideal long weekend from South India.</p>
+  </div>
+</section>
+
+<section id="budget">
+  <h2>Budget Guide</h2>
+  <p class="sub">Daily costs per person (USD).</p>
+  <table>
+    <thead><tr><th>Style</th><th>Accommodation</th><th>Food</th><th>Transport</th><th>Total/day</th></tr></thead>
+    <tbody>
+      <tr><td>Backpacker</td><td>$10–20</td><td>$8–12</td><td>$5–8</td><td>$25–40</td></tr>
+      <tr><td>Mid-range</td><td>$40–80</td><td>$15–25</td><td>$15–25</td><td>$70–130</td></tr>
+      <tr><td>Luxury</td><td>$150+</td><td>$40+</td><td>$40+</td><td>$230+</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="flights">
+  <h2>Flights</h2>
+  <p class="sub">Direct and connecting routes.</p>
+  <div class="grid grid-3">
+    <div class="card">
+      <h3><span class="badge badge-uk">UK</span> From UK</h3>
+      <p>Direct flights from London Heathrow (SriLankan Airlines, ~11h). Also via Dubai, Doha, Abu Dhabi with Emirates, Qatar, Etihad.</p>
+    </div>
+    <div class="card">
+      <h3><span class="badge badge-in">India</span> From India</h3>
+      <p>Direct flights from Chennai, Mumbai, Delhi, Bengaluru, Hyderabad, Kochi (2.5–4h). Airlines: SriLankan, IndiGo, Air India.</p>
+    </div>
+    <div class="card">
+      <h3>Airports</h3>
+      <p>Bandaranaike International (CMB) near Colombo is the main gateway. Mattala (HRI) serves south coast.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>Ready to explore Sri Lanka?</h2>
+  <p>Get personalised itineraries, visa help and on-ground support.</p>
+  <a class="btn btn-primary" href="mailto:hello@ceylontrails.com">Contact Us</a>
+</section>
+
+<footer>
+  © 2026 Ceylon Trails — Sri Lanka Travel Guide for UK & Indian Travellers
+</footer>
+</body>
+</html>
